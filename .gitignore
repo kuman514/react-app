@@ -19,6 +19,7 @@
 .env.production.local
 run_react.bat
 .eslintcache
+run_build.bat
 
 npm-debug.log*
 yarn-debug.log*

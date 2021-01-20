@@ -9,6 +9,7 @@ class App extends Component {
     super(props)
     this.state = {
       mode: 'read',
+      selected_content_id: 2,
       subject: {title: 'WEB', sub: 'World wide web'},
       welcome: {title: 'Welcome', desc: 'Hello, React!'},
       contents: [
@@ -24,8 +25,8 @@ class App extends Component {
       _title = this.state.welcome.title
       _desc = this.state.welcome.desc
     } else if (this.state.mode === 'read') {
-      _title = this.state.contents[0].title
-      _desc = this.state.contents[0].desc
+      _title = this.state.contents[this.state.selected_content_id].title
+      _desc = this.state.contents[this.state.selected_content_id].desc
     }
     return (
       <div className="App">
@@ -55,9 +56,10 @@ class App extends Component {
         </header>*/}
         <TOC
           data={this.state.contents}
-          onChangePage={function () {
+          onChangePage={function (target_id) {
             this.setState({
-              mode: 'read'
+              mode: 'read',
+              selected_content_id: Number(target_id) - 1
             })
           }.bind(this)}>
         </TOC>

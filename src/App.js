@@ -29,11 +29,16 @@ class App extends Component {
     }
     return (
       <div className="App">
-        {/*<Subject
+        <Subject
           title={this.state.subject.title}
-          sub={this.state.subject.sub}>
-        </Subject>*/}
-        <header>
+          sub={this.state.subject.sub}
+          onChangePage={function () {
+            this.setState({
+              mode: 'welcome'
+            })
+          }.bind(this)}>
+        </Subject>
+        {/*<header>
           <h1><a href="/" onClick={function (e) {
             console.log(e)
             e.preventDefault() // Prevent reload when event function ends
@@ -43,9 +48,11 @@ class App extends Component {
             })
             // target.bind(object)
             // bind an object to a target
+            // Why .setState()?
+            // setState doesn't just change state but also notify the update to React
           }.bind(this)}>{this.state.subject.title}</a></h1>
           {this.state.subject.sub}
-        </header>
+        </header>*/}
         <Subject title="React" sub="For UI"></Subject>
         <TOC data={this.state.contents}></TOC>
         <Content title={_title} desc={_desc}></Content>

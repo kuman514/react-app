@@ -37,7 +37,11 @@ class App extends Component {
           <h1><a href="/" onClick={function (e) {
             console.log(e)
             e.preventDefault() // Prevent reload when event function ends
-          }}>{this.state.subject.title}</a></h1>
+            // use bind and setState to modify state
+            this.setState({
+              mode: 'welcome'
+            })
+          }.bind(this)}>{this.state.subject.title}</a></h1>
           {this.state.subject.sub}
         </header>
         <Subject title="React" sub="For UI"></Subject>

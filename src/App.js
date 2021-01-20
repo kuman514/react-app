@@ -41,6 +41,8 @@ class App extends Component {
             this.setState({
               mode: 'welcome'
             })
+            // target.bind(object)
+            // bind an object to a target
           }.bind(this)}>{this.state.subject.title}</a></h1>
           {this.state.subject.sub}
         </header>

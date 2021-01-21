@@ -3,6 +3,7 @@ import './App.css'
 import Subject from './components/Subject'
 import TOC from './components/TOC'
 import Content from './components/Content'
+import Control from './components/Control'
 
 class App extends Component {
   constructor (props) {
@@ -39,21 +40,6 @@ class App extends Component {
             })
           }.bind(this)}>
         </Subject>
-        {/*<header>
-          <h1><a href="/" onClick={function (e) {
-            console.log(e)
-            e.preventDefault() // Prevent reload when event function ends
-            // use bind and setState to modify state
-            this.setState({
-              mode: 'welcome'
-            })
-            // target.bind(object)
-            // bind an object to a target
-            // Why .setState()?
-            // setState doesn't just change state but also notify the update to React
-          }.bind(this)}>{this.state.subject.title}</a></h1>
-          {this.state.subject.sub}
-        </header>*/}
         <TOC
           data={this.state.contents}
           onChangePage={function (target_id) {
@@ -63,6 +49,11 @@ class App extends Component {
             })
           }.bind(this)}>
         </TOC>
+        <Control onChangeMode={function (_mode) {
+          this.setState({
+            mode: _mode
+          })
+        }.bind(this)}></Control>
         <Content title={_title} desc={_desc}></Content>
       </div>
     )

@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
 class Subject extends Component {
+  shouldComponentUpdate (newProps, newState) {
+    // Subject does not have to update at all
+    return false
+  }
   render () {
     console.log('Subject render')
     return (

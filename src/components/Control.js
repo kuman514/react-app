@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
 class Control extends Component {
+  shouldComponentUpdate (newProps, newState) {
+    // Control does not have to update at all
+    return false
+  }
   render () {
     console.log('Control render')
     return (

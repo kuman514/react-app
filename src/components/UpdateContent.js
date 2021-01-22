@@ -5,7 +5,8 @@ class UpdateContent extends Component {
     super(props)
     this.state = {
       title: this.props.data.title,
-      desc: this.props.data.desc
+      desc: this.props.data.desc,
+      id: this.props.data.id
     }
     this.inputFormHandler = this.inputFormHandler.bind(this)
   }
@@ -21,9 +22,14 @@ class UpdateContent extends Component {
         <form action='/update_process' method='post'
           onSubmit={function (e) {
             e.preventDefault()
-            this.props.onSubmit(e.target.title.value, e.target.desc.value)
+            this.props.onSubmit(
+              this.state.id,
+              this.state.title,
+              this.state.desc
+            )
           }.bind(this)}
         >
+          <input type='hidden' name='id' value={this.state.id}></input>
           <p>
             <input
               type='text'

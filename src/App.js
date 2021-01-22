@@ -53,16 +53,18 @@ class App extends Component {
       }.bind(this)}></CreateContent>
     } else if (this.state.mode === 'update') {
       let _content = this.getReadContent()
-      _article = <UpdateContent data={_content} onSubmit={function (_title, _desc) {
+      _article = <UpdateContent data={_content} onSubmit={function (_id, _title, _desc) {
         alert('update content')
-        /*
-        let new_content = this.state.contents.concat(
-          {id: this.max_content_id, title: _title, desc: _desc}
-        )
+        let new_content = Array.from(this.state.contents)
+        for (let i = 0; i < new_content.length; i++) {
+          if (new_content[i].id === _id) {
+            new_content[i] = {id: _id, title: _title, desc: _desc}
+            break
+          }
+        }
         this.setState({
           contents: new_content
         })
-        */
       }.bind(this)}></UpdateContent>
     }
     return _article

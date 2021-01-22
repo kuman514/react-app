@@ -48,7 +48,9 @@ class App extends Component {
           {id: this.max_content_id, title: _title, desc: _desc}
         )
         this.setState({
-          contents: new_content
+          contents: new_content,
+          mode: 'read',
+          selected_content_id: this.max_content_id
         })
       }.bind(this)}></CreateContent>
     } else if (this.state.mode === 'update') {
@@ -63,7 +65,8 @@ class App extends Component {
           }
         }
         this.setState({
-          contents: new_content
+          contents: new_content,
+          mode: 'read'
         })
       }.bind(this)}></UpdateContent>
     }

@@ -7,9 +7,13 @@ class UpdateContent extends Component {
       title: this.props.data.title,
       desc: this.props.data.desc
     }
+    this.inputFormHandler = this.inputFormHandler.bind(this)
+  }
+  inputFormHandler (e) {
+    this.setState({[e.target.name]: e.target.value})
   }
   render () {
-    console.log(this.props.data)
+    //console.log(this.props.data)
     console.log('UpdateContent render')
     return (
       <article>
@@ -26,10 +30,7 @@ class UpdateContent extends Component {
               name='title'
               placeholder='title'
               value={this.state.title}
-              onChange={function (e) {
-                console.log(e.target.value)
-                this.setState({title: e.target.value})
-              }.bind(this)}
+              onChange={this.inputFormHandler}
             ></input>
             </p>
           <p>
@@ -37,10 +38,7 @@ class UpdateContent extends Component {
               name='desc'
               placeholder='description area'
               value={this.state.desc}
-              onChange={function (e) {
-                console.log(e.target.value)
-                this.setState({desc: e.target.value})
-              }.bind(this)}
+              onChange={this.inputFormHandler}
             ></textarea>
           </p>
           <p><input type='submit'></input></p>

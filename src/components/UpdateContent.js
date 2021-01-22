@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 
 class UpdateContent extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      title: this.props.data.title,
+      desc: this.props.data.desc
+    }
+  }
   render () {
     console.log(this.props.data)
     console.log('UpdateContent render')
@@ -13,8 +20,29 @@ class UpdateContent extends Component {
             this.props.onSubmit(e.target.title.value, e.target.desc.value)
           }.bind(this)}
         >
-          <p><input type='text' name='title' placeholder='title'></input></p>
-          <p><textarea name='desc' placeholder='description area'></textarea></p>
+          <p>
+            <input
+              type='text'
+              name='title'
+              placeholder='title'
+              value={this.state.title}
+              onChange={function (e) {
+                console.log(e.target.value)
+                this.setState({title: e.target.value})
+              }.bind(this)}
+            ></input>
+            </p>
+          <p>
+            <textarea
+              name='desc'
+              placeholder='description area'
+              value={this.state.desc}
+              onChange={function (e) {
+                console.log(e.target.value)
+                this.setState({desc: e.target.value})
+              }.bind(this)}
+            ></textarea>
+          </p>
           <p><input type='submit'></input></p>
         </form>
       </article>
